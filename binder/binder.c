@@ -77,6 +77,10 @@
 #include "binder_internal.h"
 #include "binder_trace.h"
 
+#ifndef task_euid
+#define task_euid(task) (task_cred_xxx((task), euid))
+#endif
+
 static HLIST_HEAD(binder_deferred_list);
 static DEFINE_MUTEX(binder_deferred_lock);
 
